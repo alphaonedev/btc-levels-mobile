@@ -30,16 +30,16 @@
         }
         h1 {
             text-align: center;
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             margin-bottom: 4px;
             color: #fff;
-            font-weight: 600;
+            font-weight: 700;
         }
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #999;
             margin-bottom: 20px;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
         }
         .current-price {
             text-align: center;
@@ -50,32 +50,34 @@
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
         .current-price .label {
-            font-size: 0.65rem;
-            color: #888;
+            font-size: 0.8rem;
+            color: #aaa;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .current-price .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ef4444;
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ff5555;
             line-height: 1.1;
         }
         .current-price .change {
-            font-size: 0.85rem;
-            color: #ef4444;
+            font-size: 1rem;
+            color: #ff6b6b;
             margin-top: 4px;
+            font-weight: 600;
         }
         .levels-container {
             position: relative;
             padding: 0;
         }
         .section-label {
-            font-size: 0.6rem;
-            color: #555;
+            font-size: 0.75rem;
+            color: #888;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 16px 0 8px 4px;
+            margin: 20px 0 10px 4px;
+            font-weight: 600;
         }
         .level {
             display: flex;
@@ -102,24 +104,24 @@
             min-width: 0;
         }
         .level-name {
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             color: #fff;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .level-desc {
-            font-size: 0.65rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 2px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.75);
+            margin-top: 3px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .level-price {
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 800;
+            font-size: 1.1rem;
             z-index: 2;
             margin-left: 8px;
             white-space: nowrap;
@@ -137,56 +139,56 @@
         
         /* Broken Levels */
         .level.broken .level-bar {
-            background: rgba(50, 50, 50, 0.3);
-            border: 1px dashed #444;
+            background: rgba(60, 60, 60, 0.3);
+            border: 1px dashed #555;
         }
         .level.broken .level-name,
         .level.broken .level-price {
-            color: #555;
+            color: #777;
             text-decoration: line-through;
         }
         .level.broken .level-desc {
-            color: #444;
+            color: #666;
         }
         
         /* Support Levels */
         .level.support-1 .level-bar {
-            background: linear-gradient(90deg, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0.05) 100%);
-            border: 1px solid rgba(234, 179, 8, 0.4);
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.25) 0%, rgba(234, 179, 8, 0.08) 100%);
+            border: 1px solid rgba(234, 179, 8, 0.5);
         }
-        .level.support-1 .level-price { color: #eab308; }
+        .level.support-1 .level-price { color: #facc15; }
         
         .level.support-2 .level-bar {
-            background: linear-gradient(90deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.05) 100%);
-            border: 1px solid rgba(249, 115, 22, 0.4);
+            background: linear-gradient(90deg, rgba(249, 115, 22, 0.25) 0%, rgba(249, 115, 22, 0.08) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.5);
         }
-        .level.support-2 .level-price { color: #f97316; }
+        .level.support-2 .level-price { color: #fb923c; }
         
         .level.support-3 .level-bar {
-            background: linear-gradient(90deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.08) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.5);
         }
-        .level.support-3 .level-price { color: #ef4444; }
+        .level.support-3 .level-price { color: #f87171; }
         
         .level.support-4 .level-bar {
-            background: linear-gradient(90deg, rgba(185, 28, 28, 0.2) 0%, rgba(185, 28, 28, 0.05) 100%);
-            border: 1px solid rgba(185, 28, 28, 0.5);
+            background: linear-gradient(90deg, rgba(185, 28, 28, 0.25) 0%, rgba(185, 28, 28, 0.08) 100%);
+            border: 1px solid rgba(185, 28, 28, 0.6);
         }
-        .level.support-4 .level-price { color: #f87171; }
+        .level.support-4 .level-price { color: #fca5a5; }
         
         .level.support-5 .level-bar {
-            background: linear-gradient(90deg, rgba(127, 29, 29, 0.25) 0%, rgba(127, 29, 29, 0.1) 100%);
-            border: 1px solid rgba(127, 29, 29, 0.6);
+            background: linear-gradient(90deg, rgba(127, 29, 29, 0.3) 0%, rgba(127, 29, 29, 0.12) 100%);
+            border: 1px solid rgba(127, 29, 29, 0.7);
         }
-        .level.support-5 .level-price { color: #fca5a5; }
+        .level.support-5 .level-price { color: #fecaca; }
         
         /* MSTR indicator */
         .mstr-line {
             position: relative;
-            margin: 12px 0;
-            padding: 12px;
-            background: linear-gradient(90deg, rgba(147, 51, 234, 0.15) 0%, rgba(147, 51, 234, 0.05) 100%);
-            border: 1px solid rgba(147, 51, 234, 0.4);
+            margin: 14px 0;
+            padding: 14px;
+            background: linear-gradient(90deg, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.08) 100%);
+            border: 1px solid rgba(147, 51, 234, 0.5);
             border-radius: 8px;
         }
         .mstr-content {
@@ -199,51 +201,51 @@
             min-width: 0;
         }
         .mstr-label {
-            font-size: 0.7rem;
-            color: #a855f7;
-            font-weight: 600;
+            font-size: 0.85rem;
+            color: #c084fc;
+            font-weight: 700;
         }
         .mstr-note {
-            font-size: 0.6rem;
-            color: #9333ea;
-            margin-top: 2px;
+            font-size: 0.75rem;
+            color: #a855f7;
+            margin-top: 3px;
         }
         .mstr-price {
-            font-size: 1rem;
-            color: #a855f7;
-            font-weight: 700;
+            font-size: 1.2rem;
+            color: #c084fc;
+            font-weight: 800;
             margin-left: 8px;
         }
         
         /* Distance badge */
         .distance-badge {
             display: inline-block;
-            background: rgba(239, 68, 68, 0.2);
-            color: #f87171;
-            font-size: 0.6rem;
-            padding: 2px 6px;
-            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.25);
+            color: #fca5a5;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
             margin-left: 6px;
-            font-weight: 600;
+            font-weight: 700;
         }
         .distance-badge.green {
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ade80;
+            background: rgba(34, 197, 94, 0.25);
+            color: #86efac;
         }
         
         /* Footer */
         .footer-note {
-            margin-top: 20px;
-            padding: 12px;
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            margin-top: 24px;
+            padding: 14px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: 8px;
-            font-size: 0.7rem;
-            color: #f87171;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            color: #fca5a5;
+            line-height: 1.6;
         }
         .footer-note strong {
-            color: #fca5a5;
+            color: #fff;
         }
         
         /* Status bar */
@@ -252,10 +254,10 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
-            padding: 8px 12px;
-            background: rgba(255,255,255,0.03);
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
             border-radius: 8px;
-            font-size: 0.65rem;
+            font-size: 0.8rem;
         }
         .status-item {
             display: flex;
@@ -263,18 +265,20 @@
             align-items: center;
         }
         .status-label {
-            color: #666;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
+            font-size: 0.7rem;
         }
         .status-value {
             color: #fff;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95rem;
         }
-        .status-value.red { color: #ef4444; }
-        .status-value.yellow { color: #eab308; }
-        .status-value.purple { color: #a855f7; }
+        .status-value.red { color: #ff6b6b; }
+        .status-value.yellow { color: #facc15; }
+        .status-value.purple { color: #c084fc; }
     </style>
 </head>
 <body>
