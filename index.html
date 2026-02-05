@@ -17,7 +17,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
             background: #0a0a0f;
-            color: #e0e0e0;
+            color: #f0f0f0;
             min-height: 100vh;
             min-height: -webkit-fill-available;
             padding: 20px 12px;
@@ -32,12 +32,12 @@
             text-align: center;
             font-size: 1.6rem;
             margin-bottom: 4px;
-            color: #fff;
+            color: #ffffff;
             font-weight: 700;
         }
         .subtitle {
             text-align: center;
-            color: #999;
+            color: #d0d0d0;
             margin-bottom: 20px;
             font-size: 0.85rem;
         }
@@ -51,19 +51,19 @@
         }
         .current-price .label {
             font-size: 0.8rem;
-            color: #aaa;
+            color: #d0d0d0;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .current-price .price {
             font-size: 3.2rem;
             font-weight: 800;
-            color: #ff5555;
+            color: #ff4444;
             line-height: 1.1;
         }
         .current-price .change {
             font-size: 1rem;
-            color: #ff6b6b;
+            color: #ff6666;
             margin-top: 4px;
             font-weight: 600;
         }
@@ -73,7 +73,7 @@
         }
         .section-label {
             font-size: 0.75rem;
-            color: #888;
+            color: #b0b0b0;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 20px 0 10px 4px;
@@ -106,14 +106,14 @@
         .level-name {
             font-weight: 700;
             font-size: 0.95rem;
-            color: #fff;
+            color: #ffffff;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .level-desc {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.75);
+            color: #e0e0e0;
             margin-top: 3px;
             white-space: nowrap;
             overflow: hidden;
@@ -125,6 +125,7 @@
             z-index: 2;
             margin-left: 8px;
             white-space: nowrap;
+            color: #ffffff;
         }
         
         /* Current Price Level */
@@ -139,56 +140,56 @@
         
         /* Broken Levels */
         .level.broken .level-bar {
-            background: rgba(60, 60, 60, 0.3);
-            border: 1px dashed #555;
+            background: rgba(100, 100, 100, 0.3);
+            border: 1px dashed #888;
         }
         .level.broken .level-name,
         .level.broken .level-price {
-            color: #777;
+            color: #a0a0a0;
             text-decoration: line-through;
         }
         .level.broken .level-desc {
-            color: #666;
+            color: #909090;
         }
         
         /* Support Levels */
         .level.support-1 .level-bar {
-            background: linear-gradient(90deg, rgba(234, 179, 8, 0.25) 0%, rgba(234, 179, 8, 0.08) 100%);
-            border: 1px solid rgba(234, 179, 8, 0.5);
+            background: linear-gradient(90deg, rgba(250, 204, 21, 0.3) 0%, rgba(250, 204, 21, 0.12) 100%);
+            border: 1px solid rgba(250, 204, 21, 0.7);
         }
-        .level.support-1 .level-price { color: #facc15; }
+        .level.support-1 .level-price { color: #fde047; }
         
         .level.support-2 .level-bar {
-            background: linear-gradient(90deg, rgba(249, 115, 22, 0.25) 0%, rgba(249, 115, 22, 0.08) 100%);
-            border: 1px solid rgba(249, 115, 22, 0.5);
+            background: linear-gradient(90deg, rgba(251, 146, 60, 0.3) 0%, rgba(251, 146, 60, 0.12) 100%);
+            border: 1px solid rgba(251, 146, 60, 0.7);
         }
-        .level.support-2 .level-price { color: #fb923c; }
+        .level.support-2 .level-price { color: #fdba74; }
         
         .level.support-3 .level-bar {
-            background: linear-gradient(90deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.08) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.5);
+            background: linear-gradient(90deg, rgba(248, 113, 113, 0.25) 0%, rgba(248, 113, 113, 0.1) 100%);
+            border: 1px solid rgba(248, 113, 113, 0.7);
         }
-        .level.support-3 .level-price { color: #f87171; }
+        .level.support-3 .level-price { color: #fca5a5; }
         
         .level.support-4 .level-bar {
-            background: linear-gradient(90deg, rgba(185, 28, 28, 0.25) 0%, rgba(185, 28, 28, 0.08) 100%);
-            border: 1px solid rgba(185, 28, 28, 0.6);
+            background: linear-gradient(90deg, rgba(252, 165, 165, 0.3) 0%, rgba(252, 165, 165, 0.12) 100%);
+            border: 1px solid rgba(252, 165, 165, 0.75);
         }
-        .level.support-4 .level-price { color: #fca5a5; }
+        .level.support-4 .level-price { color: #fecaca; }
         
         .level.support-5 .level-bar {
-            background: linear-gradient(90deg, rgba(127, 29, 29, 0.3) 0%, rgba(127, 29, 29, 0.12) 100%);
-            border: 1px solid rgba(127, 29, 29, 0.7);
+            background: linear-gradient(90deg, rgba(254, 202, 202, 0.35) 0%, rgba(254, 202, 202, 0.15) 100%);
+            border: 1px solid rgba(254, 202, 202, 0.8);
         }
-        .level.support-5 .level-price { color: #fecaca; }
+        .level.support-5 .level-price { color: #fee2e2; }
         
         /* MSTR indicator */
         .mstr-line {
             position: relative;
             margin: 14px 0;
             padding: 14px;
-            background: linear-gradient(90deg, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.08) 100%);
-            border: 1px solid rgba(147, 51, 234, 0.5);
+            background: linear-gradient(90deg, rgba(192, 132, 252, 0.25) 0%, rgba(192, 132, 252, 0.1) 100%);
+            border: 1px solid rgba(192, 132, 252, 0.6);
             border-radius: 8px;
         }
         .mstr-content {
@@ -202,17 +203,17 @@
         }
         .mstr-label {
             font-size: 0.85rem;
-            color: #c084fc;
+            color: #d8b4fe;
             font-weight: 700;
         }
         .mstr-note {
             font-size: 0.75rem;
-            color: #a855f7;
+            color: #c4b5fd;
             margin-top: 3px;
         }
         .mstr-price {
             font-size: 1.2rem;
-            color: #c084fc;
+            color: #e9d5ff;
             font-weight: 800;
             margin-left: 8px;
         }
@@ -220,8 +221,8 @@
         /* Distance badge */
         .distance-badge {
             display: inline-block;
-            background: rgba(239, 68, 68, 0.25);
-            color: #fca5a5;
+            background: rgba(255, 100, 100, 0.3);
+            color: #fecaca;
             font-size: 0.8rem;
             padding: 4px 10px;
             border-radius: 6px;
@@ -229,23 +230,23 @@
             font-weight: 700;
         }
         .distance-badge.green {
-            background: rgba(34, 197, 94, 0.25);
-            color: #86efac;
+            background: rgba(34, 197, 94, 0.3);
+            color: #bbf7d0;
         }
         
         /* Footer */
         .footer-note {
             margin-top: 24px;
             padding: 14px;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(255, 100, 100, 0.15);
+            border: 1px solid rgba(255, 100, 100, 0.4);
             border-radius: 8px;
             font-size: 0.85rem;
-            color: #fca5a5;
+            color: #fecaca;
             line-height: 1.6;
         }
         .footer-note strong {
-            color: #fff;
+            color: #ffffff;
         }
         
         /* Status bar */
@@ -255,7 +256,7 @@
             align-items: center;
             margin-bottom: 16px;
             padding: 10px 14px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             border-radius: 8px;
             font-size: 0.8rem;
         }
@@ -265,20 +266,20 @@
             align-items: center;
         }
         .status-label {
-            color: #999;
+            color: #c0c0c0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 3px;
             font-size: 0.7rem;
         }
         .status-value {
-            color: #fff;
+            color: #ffffff;
             font-weight: 700;
             font-size: 0.95rem;
         }
-        .status-value.red { color: #ff6b6b; }
-        .status-value.yellow { color: #facc15; }
-        .status-value.purple { color: #c084fc; }
+        .status-value.red { color: #ff6666; }
+        .status-value.yellow { color: #fde047; }
+        .status-value.purple { color: #d8b4fe; }
     </style>
 </head>
 <body>
