@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>BTC Levels</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            padding: 20px 12px;
+            padding-top: env(safe-area-inset-top, 20px);
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+            color: #fff;
+            font-weight: 600;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.7rem;
+        }
+        .current-price {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .current-price .label {
+            font-size: 0.65rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .current-price .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ef4444;
+            line-height: 1.1;
+        }
+        .current-price .change {
+            font-size: 0.85rem;
+            color: #ef4444;
+            margin-top: 4px;
+        }
+        .levels-container {
+            position: relative;
+            padding: 0;
+        }
+        .section-label {
+            font-size: 0.6rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 16px 0 8px 4px;
+        }
+        .level {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .level-bar {
+            flex: 1;
+            min-height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .level-info {
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+            flex: 1;
+            min-width: 0;
+        }
+        .level-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .level-desc {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .level-price {
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 2;
+            margin-left: 8px;
+            white-space: nowrap;
+        }
+        
+        /* Current Price Level */
+        .level.current .level-bar {
+            background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+            border: 2px solid #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+        }
+        .level.current .level-price {
+            color: #fff;
+        }
+        
+        /* Broken Levels */
+        .level.broken .level-bar {
+            background: rgba(50, 50, 50, 0.3);
+            border: 1px dashed #444;
+        }
+        .level.broken .level-name,
+        .level.broken .level-price {
+            color: #555;
+            text-decoration: line-through;
+        }
+        .level.broken .level-desc {
+            color: #444;
+        }
+        
+        /* Support Levels */
+        .level.support-1 .level-bar {
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border: 1px solid rgba(234, 179, 8, 0.4);
+        }
+        .level.support-1 .level-price { color: #eab308; }
+        
+        .level.support-2 .level-bar {
+            background: linear-gradient(90deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.05) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+        .level.support-2 .level-price { color: #f97316; }
+        
+        .level.support-3 .level-bar {
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+        .level.support-3 .level-price { color: #ef4444; }
+        
+        .level.support-4 .level-bar {
+            background: linear-gradient(90deg, rgba(185, 28, 28, 0.2) 0%, rgba(185, 28, 28, 0.05) 100%);
+            border: 1px solid rgba(185, 28, 28, 0.5);
+        }
+        .level.support-4 .level-price { color: #f87171; }
+        
+        .level.support-5 .level-bar {
+            background: linear-gradient(90deg, rgba(127, 29, 29, 0.25) 0%, rgba(127, 29, 29, 0.1) 100%);
+            border: 1px solid rgba(127, 29, 29, 0.6);
+        }
+        .level.support-5 .level-price { color: #fca5a5; }
+        
+        /* MSTR indicator */
+        .mstr-line {
+            position: relative;
+            margin: 12px 0;
+            padding: 12px;
+            background: linear-gradient(90deg, rgba(147, 51, 234, 0.15) 0%, rgba(147, 51, 234, 0.05) 100%);
+            border: 1px solid rgba(147, 51, 234, 0.4);
+            border-radius: 8px;
+        }
+        .mstr-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mstr-left {
+            flex: 1;
+            min-width: 0;
+        }
+        .mstr-label {
+            font-size: 0.7rem;
+            color: #a855f7;
+            font-weight: 600;
+        }
+        .mstr-note {
+            font-size: 0.6rem;
+            color: #9333ea;
+            margin-top: 2px;
+        }
+        .mstr-price {
+            font-size: 1rem;
+            color: #a855f7;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        
+        /* Distance badge */
+        .distance-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+        .distance-badge.green {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+        
+        /* Footer */
+        .footer-note {
+            margin-top: 20px;
+            padding: 12px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            font-size: 0.7rem;
+            color: #f87171;
+            line-height: 1.5;
+        }
+        .footer-note strong {
+            color: #fca5a5;
+        }
+        
+        /* Status bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            font-size: 0.65rem;
+        }
+        .status-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .status-label {
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .status-value {
+            color: #fff;
+            font-weight: 600;
+        }
+        .status-value.red { color: #ef4444; }
+        .status-value.yellow { color: #eab308; }
+        .status-value.purple { color: #a855f7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bitcoin Support Levels</h1>
+        <div class="subtitle">Feb 4, 2026 • 9:04 PM EST</div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-label">24h</span>
+                <span class="status-value red">-5.41%</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">vs MSTR Cost</span>
+                <span class="status-value yellow">-7.7%</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Next Support</span>
+                <span class="status-value purple">$64-68K</span>
+            </div>
+        </div>
+        
+        <div class="current-price">
+            <div class="label">Current Price</div>
+            <div class="price">$71,905</div>
+            <div class="change">↓ Breaking through 72K floor</div>
+        </div>
+        
+        <div class="levels-container">
+            <div class="section-label">Broken Levels</div>
+            
+            <div class="level broken">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$83.4K — STH Cost Basis</span>
+                        <span class="level-desc">BROKEN Jan 31</span>
+                    </div>
+                    <span class="level-price">$83,400</span>
+                </div>
+            </div>
+            
+            <div class="level broken">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$74.7K — April 2025 Low</span>
+                        <span class="level-desc">BROKEN Feb 3</span>
+                    </div>
+                    <span class="level-price">$74,747</span>
+                </div>
+            </div>
+            
+            <div class="level broken">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$72K — Technical Support</span>
+                        <span class="level-desc">BROKEN TODAY</span>
+                    </div>
+                    <span class="level-price">$72,000</span>
+                </div>
+            </div>
+            
+            <div class="section-label">Current Position</div>
+            
+            <div class="level current">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">◉ CURRENT PRICE</span>
+                        <span class="level-desc">Air pocket — thin liquidity</span>
+                    </div>
+                    <span class="level-price">$71,905</span>
+                </div>
+            </div>
+            
+            <div class="mstr-line">
+                <div class="mstr-content">
+                    <div class="mstr-left">
+                        <span class="mstr-label">⚠ STRATEGY COST BASIS</span>
+                        <div class="mstr-note">713,502 BTC @ $66,385 avg</div>
+                    </div>
+                    <span class="mstr-price">$66,385</span>
+                </div>
+            </div>
+            
+            <div class="section-label">Support Levels Below</div>
+            
+            <div class="level support-1">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$64-68K — High Volume Node</span>
+                        <span class="level-desc">Pre-election accumulation</span>
+                    </div>
+                    <span class="level-price"><span class="distance-badge">-11%</span></span>
+                </div>
+            </div>
+            
+            <div class="level support-2">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$55-56K — Realized Price</span>
+                        <span class="level-desc">Aggregate cost basis all holders</span>
+                    </div>
+                    <span class="level-price"><span class="distance-badge">-23%</span></span>
+                </div>
+            </div>
+            
+            <div class="level support-3">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$48-52K — Aug 2024 Low</span>
+                        <span class="level-desc">Yen carry unwind / 2021 top</span>
+                    </div>
+                    <span class="level-price"><span class="distance-badge">-30%</span></span>
+                </div>
+            </div>
+            
+            <div class="level support-4">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$28-35K — 2022 Range</span>
+                        <span class="level-desc">MSTR crisis zone</span>
+                    </div>
+                    <span class="level-price"><span class="distance-badge">-55%</span></span>
+                </div>
+            </div>
+            
+            <div class="level support-5">
+                <div class="level-bar">
+                    <div class="level-info">
+                        <span class="level-name">$15-20K — Capitulation</span>
+                        <span class="level-desc">Requires systemic blowups</span>
+                    </div>
+                    <span class="level-price"><span class="distance-badge">-75%</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <strong>Key Watch:</strong> MSTR cost basis at $66,385 is 7.7% below current. The $64-68K zone is the line — hold there, cycle plays out normally. Lose it, and reflexive selling risk activates.
+        </div>
+    </div>
+</body>
+</html>
