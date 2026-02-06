@@ -236,7 +236,7 @@
         
         /* Footer */
         .footer-note {
-            margin-top: 24px;
+            margin-top: 16px;
             padding: 14px;
             background: rgba(255, 120, 120, 0.18);
             border: 1px solid rgba(255, 120, 120, 0.5);
@@ -248,6 +248,48 @@
         .footer-note strong {
             color: #ffffff;
         }
+        
+        /* Legend */
+        .legend {
+            margin-top: 24px;
+            padding: 14px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .legend-title {
+            font-size: 0.75rem;
+            color: #d0d0d0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .legend-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+        .legend-item:last-child {
+            margin-bottom: 0;
+        }
+        .zone-label {
+            font-weight: 700;
+            width: 90px;
+        }
+        .zone-desc {
+            color: #e0e0e0;
+            text-align: right;
+            flex: 1;
+        }
+        .zone-label.broken { color: #a0a0a0; }
+        .zone-label.underwater { color: #ff5555; }
+        .zone-label.critical { color: #fef08a; }
+        .zone-label.severe { color: #fed7aa; }
+        .zone-label.crisis { color: #fecaca; }
+        .zone-label.systemic { color: #fee2e2; }
         
         /* Status bar */
         .status-bar {
@@ -415,6 +457,34 @@
                     </div>
                     <span class="level-price"><span class="distance-badge">-75%</span></span>
                 </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-title">Zone Assessment</div>
+            <div class="legend-item">
+                <span class="zone-label broken">BROKEN</span>
+                <span class="zone-desc">$72K+ invalidated</span>
+            </div>
+            <div class="legend-item">
+                <span class="zone-label underwater">UNDERWATER</span>
+                <span class="zone-desc">Below $76,052 MSTR cost</span>
+            </div>
+            <div class="legend-item">
+                <span class="zone-label critical">CRITICAL</span>
+                <span class="zone-desc">$64-68K high volume node</span>
+            </div>
+            <div class="legend-item">
+                <span class="zone-label severe">SEVERE</span>
+                <span class="zone-desc">$48-56K bear territory</span>
+            </div>
+            <div class="legend-item">
+                <span class="zone-label crisis">CRISIS</span>
+                <span class="zone-desc">$28-35K forced selling</span>
+            </div>
+            <div class="legend-item">
+                <span class="zone-label systemic">SYSTEMIC</span>
+                <span class="zone-desc">$15-20K liquidation cascade</span>
             </div>
         </div>
         
